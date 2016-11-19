@@ -1,7 +1,9 @@
 package petersoft.com;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Created by peterkreyenhop on 6/10/16.
@@ -16,7 +18,7 @@ class PokemonTest {
         assertTrue(myPokemon.getHealth() == 99);
         assertTrue(myPokemon.getCp() == 10);
         myPokemon.setHealth(100);
-        assertEquals(myPokemon.getHealth(),100);
+        assertEquals(myPokemon.getHealth(), 100);
     }
 
 }

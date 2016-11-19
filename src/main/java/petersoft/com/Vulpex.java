@@ -1,12 +1,12 @@
 package petersoft.com;
 
-public class Pikachu extends Pokemon {
-    public Pikachu() {
-        this.setPokeDexNumber(1);
+
+public class Vulpex extends Pokemon {
+    public Vulpex() {
+        this.setPokeDexNumber(100);
         this.setCp(100);
         this.setName(this.getClass().getSimpleName());
     }
 }
-
 
 

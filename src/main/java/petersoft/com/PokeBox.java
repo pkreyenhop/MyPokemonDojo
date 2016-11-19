@@ -24,7 +24,7 @@ public class PokeBox {
     }
 
     public void printPokeBox() {
-        for (Pokemon p : pokemonList) System.out.print(p.getName()+ ", ");
+        for (Pokemon p : pokemonList) System.out.print(p.getName() + ", ");
         System.out.print(pokemonList.size());
         System.out.println();
     }

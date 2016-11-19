@@ -1,30 +1,29 @@
 package petersoft.com;
 
-abstract class Pokemon implements Comparable <Pokemon> {
+abstract class Pokemon implements Comparable<Pokemon> {
+
+    private int pokeDexNumber;
+    private int cp;
+    private int health = 100;
+    private String name = "";
 
     public int getPokeDexNumber() {
         return pokeDexNumber;
     }
 
+    //todo non default constructor
+
     public void setPokeDexNumber(int pokeDexNumber) {
         this.pokeDexNumber = pokeDexNumber;
     }
-
-    private int pokeDexNumber;
-    private int cp;
-
 
     public int getHealth() {
         return health;
     }
 
-    //todo non default constructor
-
     public void setHealth(int health) {
         this.health = health;
     }
-
-    private int health = 100;
 
     public String getName() {
         return name;
@@ -34,8 +33,6 @@ abstract class Pokemon implements Comparable <Pokemon> {
         this.name = name;
     }
 
-    private String name = "";
-
     public int getCp() {
         return cp;
     }
@@ -44,16 +41,16 @@ abstract class Pokemon implements Comparable <Pokemon> {
         this.cp = cp;
     }
 
+    public int compareTo(Pokemon other) {
+        return Integer.compare(this.pokeDexNumber, other.pokeDexNumber);
+    }
+
+
     private enum Moves {
         burp, fart, scratch, sleep;
 
         Moves() {
         }
-    }
-
-
-    public int compareTo(Pokemon other) {
-        return Integer.compare(this.pokeDexNumber, other.pokeDexNumber);
     }
 
 }
